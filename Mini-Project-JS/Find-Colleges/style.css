@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #0d1117; /* GitHub Dark Grey Background */
+    color: #c9d1d9; /* Light Grey Text */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeIn 1.5s ease-in; /* Page fade-in animation */
+}
+
+.search-container {
+    background-color: #161b22; /* Dark Grey background for container */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Strong shadow */
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    animation: slideDown 1s ease-out; /* Slide-in animation */
+    opacity: 0; /* Initially hidden */
+    animation-fill-mode: forwards; /* Keep end state of the animation */
+    animation-delay: 0.3s;
+    transition: all 0.3s ease;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #c9d1d9; /* Light Grey Text */
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #8b949e; /* Medium Grey Text */
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #30363d; /* Medium Grey Border */
+    border-radius: 6px;
+    transition: all 0.3s ease, transform 0.3s ease; /* Add scale effect */
+    background-color: #161b22; /* Dark Grey Input Background */
+    color: #c9d1d9; /* Light Grey Text for Input */
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #58a6ff; /* Blue Border on Focus */
+    box-shadow: 0 0 8px rgba(88, 166, 255, 0.4); /* Blue Glow on Focus */
+    transform: scale(1.05); /* Slight scale on focus */
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #238636; /* GitHub Green Button */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s; /* Button animation on hover */
+}
+
+button:hover {
+    background-color: #2ea043; /* Lighter Green on Hover */
+    box-shadow: 0 4px 12px rgba(35, 134, 54, 0.4); /* Green Shadow on Hover */
+    transform: scale(1.05); /* Button pop effect on hover */
+}
+
+#results {
+    max-height: 300px; /* Limit the height of the results */
+    overflow-y: auto;  /* Enable scrolling inside the results container */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #161b22; /* Dark Grey background for results */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Strong shadow */
+}
+
+#list li {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #238636; /* Green background for each item */
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Light shadow on items */
+    color: white; /* White text for list items */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Slide up animation */
+    animation: fadeInUp 0.5s ease forwards; /* Animation for list items */
+    animation-delay: calc(0.1s * var(--i)); /* Delay for each item */
+    transition: background-color 0.3s ease;
+}
+
+#list li:hover {
+    background-color: #2ea043; /* Lighter Green on Hover */
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .search-container {
+        padding: 30px;
+    }
+
+    input[type="text"] {
+        width: 65%;
+    }
+
+    button {
+        padding: 10px 18px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    input[type="text"] {
+        width: 60%;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
